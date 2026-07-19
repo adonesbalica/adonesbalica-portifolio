@@ -5,6 +5,8 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import appCss from '~/styles/app.css?url'
+import { LanguageProvider } from '~/components/LanguageProvider'
+import { useTranslation } from 'react-i18next'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -41,7 +43,16 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <html lang="en">
+    <LanguageProvider>
+      <HtmlShell />
+    </LanguageProvider>
+  )
+}
+
+function HtmlShell() {
+  const { i18n } = useTranslation()
+  return (
+    <html lang={i18n.language === 'pt' ? 'pt' : 'en'}>
       <head>
         <HeadContent />
       </head>

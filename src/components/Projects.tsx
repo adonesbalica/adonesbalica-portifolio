@@ -1,5 +1,6 @@
 import { Badge } from '~/components/ui/badge'
 import { Star } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { Project } from '~/lib/github'
 import { cn } from '~/lib/utils'
 
@@ -11,9 +12,11 @@ function formatStars(n: number) {
 function ProjectRow({
   project,
   index,
+  category,
 }: {
   project: Project
   index: number
+  category: string
 }) {
   return (
     <li className="border-b border-muted">
@@ -41,7 +44,7 @@ function ProjectRow({
             variant="secondary"
             className="w-fit font-mono text-[10px] uppercase tracking-[0.15em]"
           >
-            {project.category}
+            {category}
           </Badge>
         </span>
 
@@ -81,6 +84,8 @@ function ProjectRow({
 }
 
 export function Projects({ projects }: { projects: Project[] }) {
+  const { t } = useTranslation()
+
   return (
     <section
       id="projects"
@@ -90,18 +95,17 @@ export function Projects({ projects }: { projects: Project[] }) {
         <h2 className="flex items-baseline gap-3">
           <span className="font-mono text-xs text-primary">02</span>
           <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
-            Projects
+            {t('projects.title')}
           </span>
         </h2>
         <span className="font-mono text-xs text-muted-foreground">
-          Live from GitHub
+          {t('projects.live')}
         </span>
       </div>
 
       {projects.length === 0 ? (
         <p className="border-t border-muted py-8 font-mono text-sm text-muted-foreground">
-          Couldn&apos;t load repos from GitHub right now — check back shortly,
-          or view the profile directly on{' '}
+          {t('projects.error')}{' '}
           <a
             href="https://github.com/adonesbalica"
             className="text-primary underline underline-offset-4"
@@ -113,7 +117,12 @@ export function Projects({ projects }: { projects: Project[] }) {
       ) : (
         <ol className="border-t border-muted">
           {projects.map((project, i) => (
-            <ProjectRow key={project.id} project={project} index={i} />
+            <ProjectRow
+              key={project.id}
+              project={project}
+              index={i}
+              category={t(`projects.categories.${project.category}`)}
+            />
           ))}
         </ol>
       )}

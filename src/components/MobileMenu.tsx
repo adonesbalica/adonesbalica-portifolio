@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { Button } from '~/components/ui/button'
+import { useTranslation } from 'react-i18next'
 import { cn } from '~/lib/utils'
 
 const LINKS = [
-  { href: '#projects', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#projects', key: 'nav.work' },
+  { href: '#about', key: 'nav.about' },
+  { href: '#skills', key: 'nav.skills' },
+  { href: '#contact', key: 'nav.contact' },
 ]
 
 type MobileMenuProps = {
@@ -15,6 +16,7 @@ type MobileMenuProps = {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
+  const { t } = useTranslation()
   // Lock body scroll + close on Escape while the menu is open.
   useEffect(() => {
     if (!open) return
@@ -64,7 +66,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             onClick={onClose}
             className="border-b border-border py-4 font-display text-2xl uppercase tracking-tight text-foreground transition-colors hover:text-primary"
           >
-            {link.label}
+            {t(link.key)}
           </a>
         ))}
 
@@ -74,7 +76,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           className="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.15em]"
           render={<a href="#contact" onClick={onClose} />}
         >
-          Hire me <span aria-hidden="true">↗</span>
+          {t('nav.hire')} <span aria-hidden="true">↗</span>
         </Button>
       </nav>
     </div>

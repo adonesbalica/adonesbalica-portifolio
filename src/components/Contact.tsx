@@ -3,9 +3,11 @@ import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Textarea } from '~/components/ui/textarea'
+import { useTranslation } from 'react-i18next'
 
 export function Contact() {
   const [status, setStatus] = useState<'idle' | 'sent'>('idle')
+  const { t } = useTranslation()
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -28,24 +30,22 @@ export function Contact() {
       <h2 className="mb-2 flex items-baseline gap-3">
         <span className="font-mono text-xs text-primary">05</span>
         <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
-          Contact
+          {t('contact.title')}
         </span>
       </h2>
       <h2 className="font-display leading-[0.95] tracking-tight">
         <span className="block text-[10vw] text-foreground sm:text-5xl md:text-6xl">
-          Let&apos;s build
+          {t('contact.headingA')}
         </span>
         <span className="text-stroke block text-[10vw] sm:text-5xl md:text-6xl">
-          something.
+          {t('contact.headingB')}
         </span>
       </h2>
 
       <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <div>
           <p className="max-w-xs text-[13px] leading-relaxed text-muted-foreground">
-            Open to full-time roles and freelance projects. If you need a
-            software engineer who can own both frontend and backend, reach
-            out.
+            {t('contact.intro')}
           </p>
           <a
             href="mailto:adonesbalica@gmail.com"
@@ -54,7 +54,7 @@ export function Contact() {
             adonesbalica@gmail.com
           </a>
           <p className="mt-2 font-mono text-xs text-[#5c5c58]">
-            Usually responds within 24h
+            {t('contact.responds')}
           </p>
         </div>
 
@@ -62,37 +62,37 @@ export function Contact() {
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <Label className="mb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-[#5c5c58]">
-                Name
+                {t('contact.name')}
               </Label>
               <Input
                 required
                 name="name"
                 type="text"
-                placeholder="Jane Smith"
+                placeholder={t('contact.namePlaceholder')}
               />
             </div>
             <div>
               <Label className="mb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-[#5c5c58]">
-                Email
+                {t('contact.email')}
               </Label>
               <Input
                 required
                 name="email"
                 type="email"
-                placeholder="jane@example.com"
+                placeholder={t('contact.emailPlaceholder')}
               />
             </div>
           </div>
 
           <div>
             <Label className="mb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-[#5c5c58]">
-              Message
+              {t('contact.message')}
             </Label>
             <Textarea
               required
               name="message"
               rows={4}
-              placeholder="Tell me about your project..."
+              placeholder={t('contact.messagePlaceholder')}
             />
           </div>
 
@@ -102,12 +102,12 @@ export function Contact() {
             size="sm"
             className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
           >
-            Send it <span aria-hidden="true">↗</span>
+            {t('contact.send')} <span aria-hidden="true">↗</span>
           </Button>
 
           {status === 'sent' && (
             <p className="font-mono text-xs text-primary">
-              Opening your email client…
+              {t('contact.sending')}
             </p>
           )}
         </form>

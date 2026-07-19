@@ -1,7 +1,10 @@
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
+import { useTranslation } from 'react-i18next'
 
 export function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section
       id="top"
@@ -18,7 +21,7 @@ export function Hero() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
         </span>
-        Available for work
+        {t('hero.badge')}
       </Badge>
 
       <h1 className="font-display leading-[0.9] tracking-tight">
@@ -31,12 +34,11 @@ export function Hero() {
       </h1>
 
       <p className="mt-5 font-mono text-xs uppercase tracking-[0.25em] text-primary">
-        <span aria-hidden="true">&gt;_</span> Software Engineer
+        <span aria-hidden="true">&gt;_</span> {t('hero.role')}
       </p>
 
       <p className="mt-4 max-w-md text-balance text-[13px] leading-relaxed text-muted-foreground">
-        I build fast, scalable web and mobile applications — from
-        pixel-perfect UIs to robust backend APIs.
+        {t('hero.intro')}
       </p>
 
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -46,7 +48,7 @@ export function Hero() {
           className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
           render={<a href="#projects" />}
         >
-          View projects <span aria-hidden="true">↗</span>
+          {t('hero.viewProjects')} <span aria-hidden="true">↗</span>
         </Button>
         <Button
           variant="outline"
@@ -54,7 +56,7 @@ export function Hero() {
           className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
           render={<a href="#contact" />}
         >
-          Contact me
+          {t('hero.contactMe')}
         </Button>
       </div>
     </section>

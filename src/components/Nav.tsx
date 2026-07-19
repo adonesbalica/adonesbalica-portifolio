@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from '~/components/ui/button'
 import { MobileMenu } from '~/components/MobileMenu'
+import { LanguageToggle } from '~/components/LanguageToggle'
 import { useActiveSection } from '~/hooks/useActiveSection'
+import { useTranslation } from 'react-i18next'
 import { cn } from '~/lib/utils'
 
 const LINKS = [
-  { href: '#projects', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#contact', label: 'Contact' },
-]
+  { href: '#projects', key: 'nav.work' },
+  { href: '#about', key: 'nav.about' },
+  { href: '#skills', key: 'nav.skills' },
+  { href: '#contact', key: 'nav.contact' },
+] as const
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -18,6 +20,7 @@ export function Nav() {
   const active = useActiveSection(
     LINKS.map((l) => l.href.replace('#', '')),
   )
+  const { t } = useTranslation()
 
   useEffect(() => {
     const onScroll = () => {
@@ -57,7 +60,7 @@ export function Nav() {
                       : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
-                  {link.label}
+                  {t(link.key)}
                   <span
                     className={cn(
                       'absolute -bottom-1.5 left-0 h-px bg-primary transition-all duration-300',
@@ -70,14 +73,18 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <LanguageToggle className="hidden md:grid" />
+
             <Button
               variant="default"
               size="sm"
               className="hidden font-mono text-xs font-semibold uppercase tracking-[0.15em] md:inline-flex"
               render={<a href="#contact" />}
             >
-              Hire me <span aria-hidden="true">↗</span>
+              {t('nav.hire')} <span aria-hidden="true">↗</span>
             </Button>
+
+            <LanguageToggle className="md:hidden" />
 
             <button
               type="button"

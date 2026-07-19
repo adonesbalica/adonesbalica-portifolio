@@ -1,27 +1,28 @@
 import { Badge } from '~/components/ui/badge'
+import { useTranslation } from 'react-i18next'
 
 const STATS = [
-  { value: '6+', label: 'Years exp.' },
-  { value: '20+', label: 'Projects shipped' },
-  { value: '3', label: 'Open source libs' },
+  { value: '6+', key: 'about.stats.years' },
+  { value: '20+', key: 'about.stats.projects' },
+  { value: '3', key: 'about.stats.libs' },
 ]
 
 const EXPERIENCE = [
   {
-    role: 'Senior Frontend Engineer',
-    org: 'Acme Corp',
+    roleKey: 'about.expRoles.senior',
+    orgKey: 'about.expOrgs.acme',
     period: '2023 — Present',
     tags: ['Next.js', 'TypeScript', 'NestJS'],
   },
   {
-    role: 'Fullstack Developer',
-    org: 'Startup XYZ',
+    roleKey: 'about.expRoles.fullstack',
+    orgKey: 'about.expOrgs.startup',
     period: '2021 — 2023',
     tags: ['React', 'Node.js', 'PostgreSQL'],
   },
   {
-    role: 'Junior Developer',
-    org: 'Freelance',
+    roleKey: 'about.expRoles.junior',
+    orgKey: 'about.expOrgs.freelance',
     period: '2019 — 2021',
     tags: ['HTML', 'CSS', 'JavaScript'],
   },
@@ -32,11 +33,13 @@ const EDUCATION = [
     course: "Bachelor's in Software Engineering",
     institution: 'Faculdade Anhanguera',
     period: '2026 — 2030',
-    note: 'Started Feb 2026 · Expected graduation Jan 2030',
+    noteKey: 'about.educationNote',
   },
 ]
 
 export function About() {
+  const { t } = useTranslation()
+
   return (
     <section
       id="about"
@@ -45,39 +48,36 @@ export function About() {
       <h2 className="mb-10 flex items-baseline gap-3">
         <span className="font-mono text-xs text-primary">03</span>
         <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
-          About me
+          {t('about.title')}
         </span>
       </h2>
 
       <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
         <div>
           <p className="max-w-lg text-[13px] leading-relaxed text-muted-foreground">
-            I&apos;m Adones Balica, a software engineer focused on building
-            high-quality web and mobile products. I work across the full
-            stack — crafting responsive frontends with React and Next.js,
-            designing RESTful APIs with NestJS, and managing relational data
-            with PostgreSQL and Prisma.
+            {t('about.bio1')}
           </p>
           <p className="mt-4 max-w-lg text-[13px] leading-relaxed text-muted-foreground">
-            I care about clean code, great developer experience, and
-            shipping things that actually work in production. Whether it&apos;s
-            a design system, a backend service, or a React Native app, I
-            bring the same discipline to every layer of the stack.
+            {t('about.bio2')}
           </p>
 
           <div className="mt-10">
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#5c5c58]">
-              Experience
+              {t('about.experience')}
             </p>
             <ul className="border-t border-muted">
               {EXPERIENCE.map((job) => (
                 <li
-                  key={job.role}
+                  key={job.roleKey}
                   className="flex flex-col gap-2 border-b border-muted py-4 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
-                    <p className="font-semibold text-foreground">{job.role}</p>
-                    <p className="text-xs text-muted-foreground">{job.org}</p>
+                    <p className="font-semibold text-foreground">
+                      {t(job.roleKey)}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {t(job.orgKey)}
+                    </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     {job.tags.map((tag) => (
@@ -100,7 +100,7 @@ export function About() {
 
           <div className="mt-10">
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#5c5c58]">
-              Education
+              {t('about.education')}
             </p>
             <ul className="border-t border-muted">
               {EDUCATION.map((edu) => (
@@ -116,7 +116,7 @@ export function About() {
                       {edu.institution}
                     </p>
                     <p className="mt-1 font-mono text-[11px] text-[#5c5c58]">
-                      {edu.note}
+                      {t(edu.noteKey)}
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -127,7 +127,7 @@ export function About() {
                       {edu.period}
                     </Badge>
                     <Badge className="font-mono text-[10px] uppercase tracking-wide">
-                      In progress
+                      {t('about.inProgress')}
                     </Badge>
                   </div>
                 </li>
@@ -139,12 +139,12 @@ export function About() {
         <div>
           <div className="grid grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-8">
             {STATS.map((stat) => (
-              <div key={stat.label}>
+              <div key={stat.key}>
                 <p className="font-display text-2xl text-primary sm:text-3xl">
                   {stat.value}
                 </p>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-[#5c5c58]">
-                  {stat.label}
+                  {t(stat.key)}
                 </p>
               </div>
             ))}
