@@ -5,10 +5,19 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="mx-auto max-w-6xl px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14"
+      className="relative mx-auto max-w-6xl px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14"
     >
+      {/* faint accent glow behind the hero */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-10 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"
+      />
+
       <Badge variant="outline" className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary border-primary/30">
-        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+        </span>
         Available for work
       </Badge>
 

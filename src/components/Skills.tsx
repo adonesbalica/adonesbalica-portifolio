@@ -1,4 +1,6 @@
 import { Badge } from '~/components/ui/badge'
+import { useReveal } from '~/hooks/useReveal'
+import { cn } from '~/lib/utils'
 
 const PROFICIENCY = [
   { label: 'React / Next.js', value: 95 },
@@ -28,7 +30,34 @@ const STACK = [
   },
 ]
 
+function ProficiencyBar({
+  skill,
+  animate,
+}: {
+  skill: { label: string; value: number }
+  animate: boolean
+}) {
+  return (
+    <div>
+      <div className="mb-2 flex items-baseline justify-between font-mono text-xs">
+        <span className="text-foreground">{skill.label}</span>
+        <span className="text-primary">{skill.value}%</span>
+      </div>
+      <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
+        <div
+          className={cn(
+            'h-1 rounded-full bg-primary transition-[width] duration-1000 ease-out motion-reduce:transition-none',
+          )}
+          style={{ width: animate ? `${skill.value}%` : '0%' }}
+        />
+      </div>
+    </div>
+  )
+}
+
 export function Skills() {
+  const { ref, visible } = useReveal<HTMLDivElement>()
+
   return (
     <section
       id="skills"
@@ -41,20 +70,9 @@ export function Skills() {
         </span>
       </h2>
 
-      <div className="grid gap-x-12 gap-y-6 sm:grid-cols-2">
+      <div ref={ref} className="grid gap-x-12 gap-y-6 sm:grid-cols-2">
         {PROFICIENCY.map((skill) => (
-          <div key={skill.label}>
-            <div className="mb-2 flex items-baseline justify-between font-mono text-xs">
-              <span className="text-foreground">{skill.label}</span>
-              <span className="text-primary">{skill.value}%</span>
-            </div>
-            <div className="h-px w-full bg-muted">
-              <div
-                className="h-px bg-primary"
-                style={{ width: `${skill.value}%` }}
-              />
-            </div>
-          </div>
+          <ProficiencyBar key={skill.label} skill={skill} animate={visible} />
         ))}
       </div>
 
@@ -64,10 +82,13 @@ export function Skills() {
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[#5c5c58]">
               {group.label}
             </p>
-            <ul className="space-y-2">
+            <ul className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <li key={item}>
-                  <Badge variant="secondary" className="font-mono text-xs">
+                  <Badge
+                    variant="secondary"
+                    className="font-mono text-xs transition-colors hover:bg-primary hover:text-primary-foreground"
+                  >
                     {item}
                   </Badge>
                 </li>

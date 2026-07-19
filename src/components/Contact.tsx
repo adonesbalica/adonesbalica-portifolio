@@ -27,6 +27,9 @@ export function Contact() {
     >
       <h2 className="mb-2 flex items-baseline gap-3">
         <span className="font-mono text-xs text-primary">05</span>
+        <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
+          Contact
+        </span>
       </h2>
       <h2 className="font-display leading-[0.95] tracking-tight">
         <span className="block text-[10vw] text-foreground sm:text-5xl md:text-6xl">

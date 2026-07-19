@@ -27,6 +27,15 @@ const EXPERIENCE = [
   },
 ]
 
+const EDUCATION = [
+  {
+    course: "Bachelor's in Software Engineering",
+    institution: 'Faculdade Anhanguera',
+    period: '2026 — 2030',
+    note: 'Started Feb 2026 · Expected graduation Jan 2030',
+  },
+]
+
 export function About() {
   return (
     <section
@@ -83,6 +92,43 @@ export function About() {
                     <span className="font-mono text-[11px] text-[#5c5c58]">
                       {job.period}
                     </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-10">
+            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#5c5c58]">
+              Education
+            </p>
+            <ul className="border-t border-muted">
+              {EDUCATION.map((edu) => (
+                <li
+                  key={edu.course}
+                  className="flex flex-col gap-2 border-b border-muted py-4 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div>
+                    <p className="font-semibold text-foreground">
+                      {edu.course}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {edu.institution}
+                    </p>
+                    <p className="mt-1 font-mono text-[11px] text-[#5c5c58]">
+                      {edu.note}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge
+                      variant="outline"
+                      className="font-mono text-[10px] uppercase tracking-wide"
+                    >
+                      {edu.period}
+                    </Badge>
+                    <Badge className="font-mono text-[10px] uppercase tracking-wide">
+                      In progress
+                    </Badge>
                   </div>
                 </li>
               ))}

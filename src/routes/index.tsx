@@ -7,6 +7,8 @@ import { About } from '~/components/About'
 import { Skills } from '~/components/Skills'
 import { Contact } from '~/components/Contact'
 import { Footer } from '~/components/Footer'
+import { Reveal } from '~/components/Reveal'
+import { BackToTop } from '~/components/BackToTop'
 
 export const Route = createFileRoute('/')({
   loader: () => getFeaturedProjects(),
@@ -21,12 +23,21 @@ function Home() {
       <Nav />
       <main>
         <Hero />
-        <Projects projects={projects} />
-        <About />
-        <Skills />
-        <Contact />
+        <Reveal>
+          <Projects projects={projects} />
+        </Reveal>
+        <Reveal>
+          <About />
+        </Reveal>
+        <Reveal>
+          <Skills />
+        </Reveal>
+        <Reveal>
+          <Contact />
+        </Reveal>
       </main>
       <Footer />
+      <BackToTop />
     </div>
   )
 }
