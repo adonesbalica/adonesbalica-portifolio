@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { nitro } from 'nitro/vite'
 import viteReact from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
     }),
     tailwindcss(),
     tanstackStart(),
+    nitro(),
     // react's vite plugin must come after start's vite plugin
     viteReact(),
   ],
