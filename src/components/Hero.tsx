@@ -1,0 +1,53 @@
+import { Badge } from '~/components/ui/badge'
+import { Button } from '~/components/ui/button'
+
+export function Hero() {
+  return (
+    <section
+      id="top"
+      className="mx-auto max-w-6xl px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14"
+    >
+      <Badge variant="outline" className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary border-primary/30">
+        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+        Available for work
+      </Badge>
+
+      <h1 className="font-display leading-[0.9] tracking-tight">
+        <span className="block text-[9vw] text-foreground sm:text-2xl md:text-3xl lg:text-[2.25rem]">
+          Adones
+        </span>
+        <span className="text-stroke block text-[9vw] sm:text-2xl md:text-3xl lg:text-[2.25rem]">
+          Balica
+        </span>
+      </h1>
+
+      <p className="mt-5 font-mono text-xs uppercase tracking-[0.25em] text-primary">
+        <span aria-hidden="true">&gt;_</span> Software Engineer
+      </p>
+
+      <p className="mt-4 max-w-md text-balance text-[13px] leading-relaxed text-muted-foreground">
+        I build fast, scalable web and mobile applications — from
+        pixel-perfect UIs to robust backend APIs.
+      </p>
+
+      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+        <Button
+          variant="default"
+          size="sm"
+          className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
+          render={<a href="#projects" />}
+        >
+          View projects <span aria-hidden="true">↗</span>
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
+          render={<a href="#contact" />}
+        >
+          Contact me
+        </Button>
+      </div>
+    </section>
+  )
+}
