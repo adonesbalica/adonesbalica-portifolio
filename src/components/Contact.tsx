@@ -16,7 +16,7 @@ export function Contact() {
 
     const subject = encodeURIComponent(`Project inquiry from ${name}`)
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`)
-    window.location.href = `mailto:adones@example.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:adonesbalica@gmail.com?subject=${subject}&body=${body}`
     setStatus('sent')
   }
 
@@ -45,10 +45,10 @@ export function Contact() {
             out.
           </p>
           <a
-            href="mailto:adones@example.com"
+            href="mailto:adonesbalica@gmail.com"
             className="mt-6 block font-display text-base text-primary"
           >
-            adones@example.com
+            adonesbalica@gmail.com
           </a>
           <p className="mt-2 font-mono text-xs text-[#5c5c58]">
             Usually responds within 24h
