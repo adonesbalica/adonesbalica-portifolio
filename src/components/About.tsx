@@ -35,7 +35,7 @@ export function About() {
     >
       <h2 className="mb-10 flex items-baseline gap-3">
         <span className="font-mono text-xs text-primary">03</span>
-        <span className="font-display text-base uppercase tracking-tight sm:text-lg">
+        <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
           About me
         </span>
       </h2>
@@ -67,7 +67,7 @@ export function About() {
                   className="flex flex-col gap-2 border-b border-muted py-4 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
-                    <p className="text-sm font-semibold text-foreground">{job.role}</p>
+                    <p className="font-semibold text-foreground">{job.role}</p>
                     <p className="text-xs text-muted-foreground">{job.org}</p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -94,7 +94,7 @@ export function About() {
           <div className="grid grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-8">
             {STATS.map((stat) => (
               <div key={stat.label}>
-                <p className="font-display text-base text-primary sm:text-lg">
+                <p className="font-display text-2xl text-primary sm:text-3xl">
                   {stat.value}
                 </p>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-[#5c5c58]">

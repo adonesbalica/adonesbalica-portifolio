@@ -13,7 +13,7 @@ export function Nav() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-8">
         <a
           href="#top"
-          className="font-display text-sm tracking-tight text-foreground"
+          className="font-display text-base tracking-tight text-foreground"
         >
           AB
         </a>

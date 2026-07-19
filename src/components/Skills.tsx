@@ -36,7 +36,7 @@ export function Skills() {
     >
       <h2 className="mb-10 flex items-baseline gap-3">
         <span className="font-mono text-xs text-primary">04</span>
-        <span className="font-display text-base uppercase tracking-tight sm:text-lg">
+        <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
           Skills
         </span>
       </h2>

@@ -10,7 +10,7 @@ export function Projects({ projects }: { projects: Project[] }) {
       <div className="mb-10 flex flex-wrap items-end justify-between gap-3">
         <h2 className="flex items-baseline gap-3">
           <span className="font-mono text-xs text-primary">02</span>
-          <span className="font-display text-base uppercase tracking-tight sm:text-lg">
+          <span className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
             Projects
           </span>
         </h2>
@@ -46,7 +46,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                 </span>
 
                 <span className="flex flex-1 flex-col sm:flex-row sm:items-baseline sm:gap-3">
-                  <span className="font-display text-sm uppercase tracking-tight text-foreground group-hover:text-primary sm:text-base">
+                  <span className="font-display text-lg uppercase tracking-tight text-foreground group-hover:text-primary sm:text-xl">
                     {project.displayName}
                   </span>
                   <Badge variant="secondary" className="w-fit font-mono text-[10px] uppercase tracking-[0.15em]">

@@ -13,10 +13,10 @@ export function Hero() {
       </Badge>
 
       <h1 className="font-display leading-[0.9] tracking-tight">
-        <span className="block text-[9vw] text-foreground sm:text-2xl md:text-3xl lg:text-[2.25rem]">
+        <span className="block text-[12vw] text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem]">
           Adones
         </span>
-        <span className="text-stroke block text-[9vw] sm:text-2xl md:text-3xl lg:text-[2.25rem]">
+        <span className="text-stroke block text-[12vw] sm:text-5xl md:text-6xl lg:text-[4.5rem]">
           Balica
         </span>
       </h1>
